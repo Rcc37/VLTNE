@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine Nalini 💖</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #ff4d88, #8b004f 70%);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+}
+
+/* 🌟 Background Stars */
+.star {
+    position: fixed;
+    background: #ffd6f6;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+    z-index: 0;
+}
+
+@keyframes twinkle {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
+
+/* 💖 Main Box */
+.container {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 105, 180, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 30px 20px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(255, 20, 147, 0.6);
+}
+
+/* Titles */
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 12px #ff99cc;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    margin: 8px 0;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background: #ff1a75;
+    color: white;
+    box-shadow: 0 0 12px #ff4da6;
+}
+
+#noBtn {
+    background: white;
+    color: #ff1a75;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Meme Box */
+#memeBox {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.15);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* 💖 Heart Pop Animation */
+@keyframes pop {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Happy Valentine's Day Nalini (Sleepig Queen) 💖</h1>
+    <h2>Will You Be My Valentine?</h2>
+
+    <button id="yesBtn" onclick="yesClicked()">YES 💖</button>
+    <button id="noBtn" onmouseover="moveNo()" ontouchstart="moveNo()">NO 😏</button>
+
+    <div id="memeBox">
+        <h3>Sach batau toh I have never done this before 🥹</h3>
+        <p style="font-size:30px;">🕺🔥💘✨🎉</p>
+        <p>
+            Let's plan something for tomorrow ❤️<br>
+            Proud of you!<br>
+            Tum akeli nahi ho 💗 <br>
+            I hope now you don't feel left out now
+        </p>
+    </div>
+</div>
+
+<script>
+let stars = [];
+
+/* 🌟 Create Stars */
+for (let i = 0; i < 120; i++) {
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.width = star.style.height = Math.random() * 2 + "px";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.animationDuration = Math.random() * 3 + 2 + "s";
+    document.body.appendChild(star);
+    stars.push(star);
+}
+
+function yesClicked() {
+
+    // 🌟 Brighten Stars
+    stars.forEach(star => {
+        star.style.boxShadow = "0 0 18px 6px #ffccff";
+        star.style.width = star.style.height = "4px";
+    });
+
+    // 💖 Heart Explosion
+    for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.innerText = "💖";
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = Math.random() * 100 + "vh";
+        heart.style.fontSize = "25px";
+        heart.style.zIndex = "3";
+        heart.style.animation = "pop 1s ease forwards";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1000);
+    }
+
+    document.getElementById("memeBox").style.display = "block";
+}
+
+function moveNo() {
+    const btn = document.getElementById("noBtn");
+
+    btn.style.position = "fixed";
+
+    const padding = 20;
+    const maxX = window.innerWidth - btn.offsetWidth - padding;
+    const maxY = window.innerHeight - btn.offsetHeight - padding;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    btn.style.left = randomX + "px";
+    btn.style.top = randomY + "px";
+}
+</script>
+
+</body>
+</html>
